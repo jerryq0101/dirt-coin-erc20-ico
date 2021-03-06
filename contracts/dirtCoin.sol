@@ -2,23 +2,29 @@ pragma solidity ^0.4.22;
 
 contract dirtCoin {
 
-  //name
   string public name = "dirtCoin";
-  //symbpl
   string public symbol = "DTC";
-  //standard
   string public standard = "dirtCoin v0.1";
   uint256 public totalSupply;
 
+  // constructor
+  function dirtCoin(uint256 _initialSupply) public
+  {
+    // setting the admin account's balance as initialSupply as a storage
+    balanceOf[msg.sender] = _initialSupply;
+
+    // totalSupply is integrated with admin account's supply
+    totalSupply = _initialSupply;
+  }
+
+  //transfer event
   event Transfer (
     address indexed _from,
     address indexed _to,
     uint256 _value
   );
 
-  //transfer
-
-// approve event
+  // approve event
   event Approval (
     address indexed _owner, // owner of tokens
     address indexed _spender, // spender gets access to allowance
@@ -34,18 +40,7 @@ contract dirtCoin {
   // account1 approves account2 to spend uint256 amount of tokens
 
 
-  // constructor
-
-  function dirtCoin(uint256 _initialSupply) public {
-    // writing initialsupply of the first ganache account to its balance
-    balanceOf[msg.sender] = _initialSupply;
-    //allocate the initial supply
-    totalSupply = _initialSupply;
-  }
-
   // Transfer Function
-
-
   function transfer(address _to, uint256 _value) public returns (bool success) {
     // exception if acc does not have enough
 
@@ -78,7 +73,6 @@ contract dirtCoin {
   }
 
 
-
   function transferFrom(address _from, address _to, uint256 _value) public returns (bool success){
 
     // require _from has enough token
@@ -100,15 +94,4 @@ contract dirtCoin {
     //return boolean
     return true;
   }
-
-
-
-
-
-
-
-
-
-
-
 }
