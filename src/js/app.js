@@ -82,7 +82,9 @@ App = {
       if (err === null) {
         App.account = res;
         $("#accountAddress").html("Your account: " + res);
+        $("#tokenAddress").html("Token's Address: 0x2927431C448faA151d2C281B55B203bE4253DE44")
         console.log(App.account);
+
       }
     });
 
