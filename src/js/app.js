@@ -86,6 +86,8 @@ App = {
       }
     });
 
+
+
     // load token sale contract
     App.contracts.dirtCoinSale.deployed().then(function(instance) {
       dirtCoinSaleInstance = instance;
